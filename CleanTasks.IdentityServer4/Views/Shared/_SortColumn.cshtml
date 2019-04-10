@@ -1,0 +1,27 @@
+﻿@model (string, string, AdministrationViewModel)
+
+<div class="parent">
+    <vc:table-link action="Index" model="@Model.Item3" page="@Model.Item3.Page" text="@Model.Item1" sort-column="@Model.Item2"></vc:table-link>
+    @*<a asp-action="Index"
+       asp-route-Page="@Model.Item3.Page"
+       asp-route-SortColumn="@Model.Item2"
+       asp-route-SortOrder="@Model.Item3.SortOrder"
+       asp-route-Permission="@Model.Item3.Permission"
+       asp-route-PageSize="@Model.Item3.PageSize">
+        @Model.Item1
+
+    </a>*@
+    &nbsp;
+    @if (!string.IsNullOrEmpty(Model.Item3.SortColumn) && Model.Item3.SortColumn.Equals(Model.Item2))
+    {
+
+        if (Model.Item3.SortOrder == "desc")
+        {
+            <i class="glyphicon glyphicon-sort-by-attributes-alt child"></i>
+        }
+        else if (Model.Item3.SortOrder == "asc")
+        {
+            <i class="glyphicon glyphicon-sort-by-attributes child"></i>
+        }
+    }
+</div>

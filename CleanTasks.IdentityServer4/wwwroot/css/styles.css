@@ -1,0 +1,74 @@
+﻿.one-liner {
+    white-space:nowrap;
+}
+
+.custom-table-buttons:not(:hover) {
+    visibility: hidden;
+}
+
+.pointer {
+    cursor:pointer;
+}
+
+.table-hover > tbody > tr:hover .custom-table-buttons {
+    visibility: visible;
+}
+
+.table-btn:hover {
+    color:Highlight;
+}
+
+.table td.fit,
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}
+
+.parent {
+    position:relative;
+}
+
+.child {
+    position: absolute;
+}
+
+.width-150 {
+    width:150px;
+}
+
+
+.width-300 {
+    width: 300px;
+}
+
+.width-250 {
+    width: 250px;
+}
+
+.width-600 {
+    width: 600px;
+}
+
+.width-500 {
+    width: 500px;
+}
+
+.width-400 {
+    width: 400px;
+}
+
+.inline-block {
+    display:inline-block;
+}
+
+.table-wrapper {
+    overflow: hidden;
+}
+
+.table-wrapper > div {
+    overflow: auto;
+}
+
+.right {
+    float: right;
+}

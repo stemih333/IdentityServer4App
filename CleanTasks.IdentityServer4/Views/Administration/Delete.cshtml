@@ -1,0 +1,18 @@
+﻿@model DeleteUserViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+<form class="panel panel-default width-400" asp-action="DeleteUser" method="post">
+    <input type="hidden" asp-for="@Model.UserId" />
+    <input type="hidden" asp-for="@Model.UserName" />
+    <div class="panel-heading">
+        <h4>Delete user</h4>
+    </div>
+    <div class="panel-body">
+        <p>Are you sure you want to delete user <b>@Model.UserName</b>?</p>
+    </div>
+    <div class="panel-footer">
+        <button type="submit" class="btn btn-sm btn-danger">Yes</button>
+        <a asp-action="Details" asp-route-userId="@Model.UserId" class="btn btn-sm btn-default">Cancel</a>
+    </div>
+</form>

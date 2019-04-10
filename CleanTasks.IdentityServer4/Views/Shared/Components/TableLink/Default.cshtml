@@ -1,0 +1,20 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model TableLinkViewModel
+
+<a asp-action="@Model.Action"
+   asp-route-Page="@Model.Page"
+   asp-route-FirstName="@Model.AdminModel.FirstName"
+   asp-route-LastName="@Model.AdminModel.LastName"
+   asp-route-UserName="@Model.AdminModel.UserName"
+   asp-route-Email="@Model.AdminModel.Email"
+   asp-route-Created="@Model.AdminModel.Created"
+   asp-route-CreatedBy="@Model.AdminModel.CreatedBy"
+   asp-route-UpdatedBy="@Model.AdminModel.UpdatedBy"
+   asp-route-Updated="@Model.AdminModel.Updated"
+   asp-route-SortColumn="@Model.SortColumn"
+   asp-route-SortOrder="@Model.AdminModel.SortOrder"
+   asp-route-Permission="@Model.AdminModel.Permission"
+   asp-route-PageSize="@Model.AdminModel.PageSize">
+    <span >@Model.Text</span>
+</a>

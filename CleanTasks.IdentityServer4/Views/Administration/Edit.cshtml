@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Edit";
+}
+
+@model EditViewModel
+
+<partial name="_validationSummary">
+
+    <form class="panel width-300  panel-default" asp-action="Edit" method="post">
+        <div class="panel-heading">
+            <h4>Edit user details</h4>
+        </div>
+        <div class="panel-body">
+            <div class="form-group form-group-sm">
+                <label asp-for="@Model.UserName"></label>
+                <input asp-for="@Model.UserName" readonly class="form-control input-sm width-250" />
+            </div>
+            <div class="form-group form-group-sm">
+                <label asp-for="@Model.FirstName"></label>
+                <input asp-for="@Model.FirstName" class="form-control input-sm width-250" />
+            </div>
+            <div class="form-group form-group-sm">
+                <label asp-for="@Model.LastName"></label>
+                <input asp-for="@Model.LastName" class="form-control input-sm width-250" />
+            </div>
+            <div class="form-group form-group-sm">
+                <label asp-for="@Model.Email"></label>
+                <input asp-for="@Model.Email" class="form-control input-sm" />
+            </div>
+            <input asp-for="@Model.UpdatedBy" />
+            <input asp-for="@Model.Updated" />
+            <input asp-for="@Model.Id" />
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-sm btn-primary" type="submit">Save</button>
+            <a asp-action="Details" asp-route-userId="@Model.Id" class="btn btn-sm btn-default">Cancel</a>
+        </div>
+    </form>

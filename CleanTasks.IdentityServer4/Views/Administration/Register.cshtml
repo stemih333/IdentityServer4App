@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+@model RegisterViewModel
+
+<partial name="_ValidationSummary" />
+
+<div class="panel width-300 panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Register new user</h3>
+    </div>
+    <div class="panel-body">
+        <form asp-route="Register" autocomplete="off">
+            <fieldset>
+                <div class="form-group">
+                    <label asp-for="UserName"></label>
+                    <input autocomplete="new-password" autocorrect="off" class="form-control" asp-for="UserName" maxlength="10" size="10">
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input autocomplete="new-password" autocorrect="off" class="form-control" type="email" asp-for="Email" maxlength="50">
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FirstName"></label>
+                    <input autocomplete="new-password" autocorrect="off" class="form-control" asp-for="FirstName" size="25" maxlength="25">
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LastName"></label>
+                    <input autocomplete="new-password" autocorrect="off" class="form-control" asp-for="LastName" size="25" maxlength="25">
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input autocomplete="new-password" autocorrect="off" class="form-control" type="password" asp-for="Password" size="20" maxlength="20">
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary" name="button" value="submit">Submit</button>
+                    <a class="btn btn-default" asp-action="Index">Cancel</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+

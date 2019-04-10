@@ -1,0 +1,122 @@
+﻿@model AdministrationViewModel
+
+<form method="post" asp-action="Filter" asp-controller="Administration">
+    <input type="hidden" asp-for="@Model.Page" />
+    <input type="hidden" asp-for="@Model.PageSize" />
+    <input type="hidden" asp-for="@Model.SortColumn" />
+    <input type="hidden" asp-for="@Model.SortOrder" />
+    <input type="hidden" asp-for="@Model.Permission" />
+    <partial name="_ValidationSummary" />
+    @if(TempData["SuccessMessage"] != null)
+    {
+    <div class="alert alert-dismissable alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span>@TempData["SuccessMessage"]</span>
+    </div>
+    }
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="dropdown inline-block">
+                <button class="btn btn-default dropdown-toggle btn-sm" type="button" id="permissionDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Administer Permissions
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu input-group-sm" aria-labelledby="permissionDropDown">
+                    <li><a asp-action="Index" asp-route-Permission="@AuthConstants.UserPermission">User</a></li>
+                    <li><a asp-action="Index" asp-route-Permission="@AuthConstants.UserAdminPermission">User Admin</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-primary btn-sm" asp-action="Register"><i class="glyphicon glyphicon-plus"></i></a>
+            <button class="btn btn-default btn-sm"><i class="glyphicon glyphicon-filter"></i></button>
+        </div>
+        <div class="panel-body table-wrapper">
+
+            <div >
+                <table class="table table-condensed table-striped table-hover custom-table">
+                    <thead>
+                        <tr>
+                            <th class="one-liner fit"></th>
+                            <th class="one-liner fit">
+                                <partial name="_SortColumn" model="@("User Name", "UserName", Model);">
+                                    <input asp-for="@Model.UserName" class="form-control input-sm width-150" />
+                            </th>
+                            <th class="one-liner fit">
+                                <partial name="_SortColumn" model="@("First name", "FirstName", Model);">
+                                    <input asp-for="@Model.FirstName" class="form-control input-sm width-150" />
+                            </th>
+                            <th class="one-liner fit">
+                                <partial name="_SortColumn" model="@("Last name", "LastName", Model);">
+                                    <input asp-for="@Model.LastName" class="form-control input-sm width-150" />
+                            </th>
+                            <th class="one-liner fit">
+                                <partial name="_SortColumn" model="@("E-mail", "Email", Model);">
+                                    <input asp-for="@Model.Email" class="form-control input-sm width-150" />
+                            </th>
+                            <th class="one-liner fit">
+                                <partial name="_SortColumn" model="@("Created date", "Created", Model);">
+                                    <input asp-for="@Model.Created" type="text" class="form-control input-sm width-150" />
+                            </th>
+                            <th class="one-liner fit">
+                                <partial name="_SortColumn" model="@("Created by", "CreatedBy", Model);">
+                                    <input asp-for="@Model.CreatedBy" type="text" class="form-control input-sm width-150" />
+                            </th>
+                            <th class="one-liner fit">
+                                <partial name="_SortColumn" model="@("Updated date", "Updated", Model);">
+                                    <input asp-for="@Model.Updated" type="text" class="form-control input-sm width-150" />
+                            </th>
+                            <th class="one-liner fit">
+                                <partial name="_SortColumn" model="@("Updated by", "UpdatedBy", Model);">
+                                    <input asp-for="@Model.UpdatedBy" class="form-control input-sm width-150" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Users)
+                        {
+                            <tr>
+                                <td class="one-liner fit">
+                                    <div class="custom-table-buttons">
+                                        <a asp-action="Details" asp-route-userId="@user.Id">
+                                            <i class="glyphicon glyphicon-search pointer table-btn"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="one-liner">@user.UserName</td>
+                                <td class="one-liner">@user.FirstName</td>
+                                <td class="one-liner">@user.LastName</td>
+                                <td class="one-liner">@user.Email</td>
+                                <td class="one-liner">@user.Created?.ToString("yyyy-MM-dd")</td>
+                                <td class="one-liner">@user.CreatedBy</td>
+                                <td class="one-liner">@user.Updated?.ToString("yyyy-MM-dd")</td>
+                                <td class="one-liner">@user.UpdatedBy</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                   
+                    <li condition-class-disabled="@Model.IsFirstPage">
+                        <vc:table-link sort-column="@null" action="Index" model="@Model" page="1" text="<<"></vc:table-link>
+                    </li>
+                    
+                   @for (var i = 1; i <= Model.LastPage; i++)
+                   {
+                    <li condition-class-active="@i == @Model.Page">
+                        <vc:table-link sort-column="@null" action="Index" model="@Model" page="@i" text="@i"></vc:table-link>
+                    </li>
+                    }
+                   
+                    <li condition-class-disabled="@Model.IsLastPage">
+                        <vc:table-link sort-column="@null" action="Index" model="@Model" page="@Model.LastPage" text=">>"></vc:table-link>
+                    </li>                    
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+</form>
+

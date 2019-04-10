@@ -1,0 +1,13 @@
+﻿<div class="width-600">
+    <div class="jumbotron">
+        <h2>An error has occured!</h2>
+        @if(!ViewContext.ModelState.IsValid)
+        {
+            <div asp-validation-summary="All" class="danger"></div>
+        }
+        else
+        {
+            <p class="danger">An unknown error has occured.</p>
+        }
+    </div>
+</div>
